@@ -1,7 +1,7 @@
 const {
     addKeyword
 } = require('@bot-whatsapp/bot')
-
+const trigger = "menu"
 
 const flow1RetailOp1 = addKeyword(['1']).addAnswer([
 
@@ -10,14 +10,14 @@ const flow1RetailOp1 = addKeyword(['1']).addAnswer([
 const flow2Retail = addKeyword(['2', 'retail']).addAnswer(
     [
         'Estás en 👉 Retail',
-        '*1* - Remasterizar pc Carrefour',
-        '*2* - Reemplazar disco dañado Carrefour',
-        '*3* - Guía retail',
+        '*1* - ~Remasterizar pc Carrefour~',
+        '*2* - ~Reemplazar disco dañado Carrefour~',
+        '*3* - ~Guía retail~',
         '📌 *PIM* Retail ✅  ',
         '🔗 https://onlinehelp.ncr.com/eHome.htm',
 
         '',
-        '*' + "triggerKey" + '* para volver al menu principal',
+        '*' + trigger + '* para volver al menu principal',
     ],
     null,
     null,

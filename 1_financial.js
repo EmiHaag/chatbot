@@ -5,25 +5,30 @@ const {
 const {
     flowS1
 } = require('./modulos/s1')
-const keywordThrigger = "menu"
+const {
+    flowEpp
+} = require('./modulos/epp')
+const trigger = "menu"
 
 const flow1FinancialOp1 = addKeyword(['1', 'modulo']).addAnswer([
     '📂 Estás en / Financial - Bancos / 👉 *Módulos*\n',
     'Cual es el módulo que buscas ?\n',
-    '*1* - S1 Dispensador de dinero',
-    '*2* - S2 Dispensador de dinero',
-    '*3* - Bna3 Deposito dinero',
-    '*4* - GBRU Reciclador de dinero',
-    '*5* - BRM Reciclador de dinero',
-    '*6* - SCPM Depósito de cheques',
-    '*7* - MCRW Lectora de tarjetas motorizada',
+    '*1* - S1 Dispensador de dinero\n',
+    '*2* - ~S2 Dispensador de dinero~\n',
+    '*3* - ~Bna3 Deposito dinero~\n',
+    '*4* - ~GBRU Reciclador de dinero~\n',
+    '*5* - ~BRM Reciclador de dinero~\n',
+    '*6* - ~SCPM Depósito de cheques~\n',
+    '*7* - ~MCRW Lectora de tarjetas motorizada~\n',
+    '*8* - Teclado encryptor EPP\n',
+
 
     '',
-    '*' + keywordThrigger + '* para volver al menu principal',
+    '*' + trigger + '* para volver al menu principal',
 
 ], {
     delay: 1000
-}, null, [flowS1])
+}, null, [flowS1, flowEpp])
 const flow1FinancialOp0 = addKeyword(['0', 'PIM']).addAnswer([
     '📂 Estás en / Financial - Bancos / 👉 *PIM* - Parts Identification Manual ',
     '',
@@ -34,6 +39,9 @@ const flow1FinancialOp0 = addKeyword(['0', 'PIM']).addAnswer([
     '',
     '📌 *PIM* Modelo *6622* ✅  ',
     '🔗 https://ncr-my.sharepoint.com/:b:/p/eh185079/ETmbI65JcotPrvCi3Tafv6oBAkNQiZvfl1wXuxTTApl0IA?e=XjKm3M',
+    '',
+    '📌 *PIM* Modelo *6623* ✅  ',
+    '🔗 https://ncr-my.sharepoint.com/:b:/p/eh185079/Ecjy4O9fdttHkHtO0oECUgYBXsB1zu745xMIA5wc6EPC7w?e=XSJBAs',
     '',
     '📌 *PIM* Modelo *6626* ✅  ',
     '🔗 https://ncr-my.sharepoint.com/:b:/p/eh185079/Edn8QAD5cnhFgk0OaRsVvD4BlMzs7TgWfsTv6fx69X-T5Q?e=r2v52c',
@@ -52,7 +60,7 @@ const flow1FinancialOp0 = addKeyword(['0', 'PIM']).addAnswer([
     '',
 
     '',
-    '*' + keywordThrigger + '* para volver al menu principal',
+    '*' + trigger + '* para volver al menu principal',
 
 ], {
     delay: 1000
@@ -61,15 +69,15 @@ const flow1Financial = addKeyword(['1', 'financial', 'bancos']).addAnswer(
     [
         '📂 Estás en / *Financial - Bancos*',
         '',
-        '*0* - Busco el manual (*PIM - Parts Identification Manual*) de un modelo de ATM (6622, 6632, 6626, 6634, 6682, 6683)',
-        '*1* - Busco información sobre un *módulo*',
-        '*2* - Quiero saber que sistema operativo tiene o que tipo de pc',
-        '*3* - Instalaciones-remasterizaciones',
-        '*4* - cambio denominaciones',
-        '*4* - Instalar templates',
-        '*6* - Otros(tiras ej, etc..)',
+        '*0* - Busco el manual (*PIM - Parts Identification Manual*) de un modelo de ATM (6622, 6632, 6626, 6634, 6682, 6683)\n',
+        '*1* - Busco información sobre un *módulo*\n',
+        '*2* - ~Quiero reconocer *que sistema operativo tiene* este equipo~\n',
+        '*3* - ~Instalaciones-remasterizaciones~\n',
+        '*4* - ~cambio denominaciones~\n',
+        '*4* - ~Instalar templates~\n',
+        '*6* - ~Otros(tiras ej, etc..)~\n',
         '',
-        '*' + keywordThrigger + '* para volver al menu principal',
+        '*' + trigger + '* para volver al menu principal',
     ], {
         delay: 1000
     },
