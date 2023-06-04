@@ -13,7 +13,7 @@ const flow2Retail = addKeyword(['2', 'retail']).addAnswer(
         '*1* - ~Remasterizar pc Carrefour~',
         '*2* - ~Reemplazar disco dañado Carrefour~',
         '*3* - ~Guía retail~',
-        '📌 *PIM* Retail ✅  ',
+        '📌 *PIM* Retail   ',
         '🔗 https://onlinehelp.ncr.com/eHome.htm',
 
         '',

@@ -5,7 +5,8 @@ const {
     addKeyword
 } = require('@bot-whatsapp/bot')
 //set this keyword to trigger first bot menu.
-var triggerKeys = ["hola", "menu", "help", "ayuda"]
+var triggerKeys = ["hola", "help", "ayuda"]
+var triggerKeysSinSaludo = ["menu"]
 
 const fs = require("fs");
 dataJS = [];
@@ -38,6 +39,29 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 
+
+const menuPrincipal = () => {
+    return [
+        'Tipea alguna de las siguientes opciones',
+        '',
+        '👉 *1* Financial (bancos)\n',
+        '👉 *2* Retail (ej Carrefour)\n',
+        '👉 *3* Administrativo (ES mobility, códigos reporte, etc.)\n',
+        '👉 *4* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~\n',
+        '👉 *5* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~\n',
+    ]
+}
+
+const menuPrincipalSinSaludo = addKeyword(triggerKeysSinSaludo)
+
+    .addAnswer(
+        menuPrincipal(), {
+            delay: 1000
+        },
+        null,
+        [flow1Financial, flow2Retail, flow3Administrativo, flow4logistica, flow5otros]
+    )
+
 /* FLOW PRINCIPAL */
 const flowPrincipal = addKeyword(triggerKeys)
     .addAnswer('🙌BOT Local para pruebas - Hola bienvenido al *Chatbot* de ayuda al CE', {
@@ -47,15 +71,7 @@ const flowPrincipal = addKeyword(triggerKeys)
         delay: 500
     })
     .addAnswer(
-        [
-            'Tipea alguna de las siguientes opciones',
-            '',
-            '👉 *1* Financial (bancos)\n',
-            '👉 *2* Retail (ej Carrefour)\n',
-            '👉 *3* Administrativo (ES mobility, códigos reporte, etc.)\n',
-            '👉 *4* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~\n',
-            '👉 *5* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~\n',
-        ], {
+        menuPrincipal(), {
             delay: 1000
         },
         null,
@@ -64,7 +80,7 @@ const flowPrincipal = addKeyword(triggerKeys)
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal])
+    const adapterFlow = createFlow([flowPrincipal, menuPrincipalSinSaludo])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({

@@ -27,9 +27,7 @@ const flowEppFallas = addKeyword(['2']).addAnswer([
 const flowEppPartes = addKeyword(['1']).addAnswer([
     '📂 Estás en  Financial - Bancos / Módulos / EPP /👉 *PARTES* \n ',
 
-    '(✅Acceso sin VPN | ⚠️Acceso con VPN)',
-    '',
-    '📌 TODOS LOS MODELOS DE EPP EN *MIST* ✅ (pág. 16) 👇🏼\n',
+    '📌 TODOS LOS MODELOS DE EPP EN *MIST*  (pág. 16) 👇🏼\n',
     '🔗 https://ncr-my.sharepoint.com/:b:/p/eh185079/ETnRQKr9Ip9HueXJrGCn1uEB4OcPDA8ugg6MMvEoUw8NOQ \n',
 
 
