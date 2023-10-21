@@ -8,7 +8,7 @@ const {
 var triggerKeys = ["hola", "help", "ayuda"]
 var triggerKeysSinSaludo = ["menu"]
 
-const fs = require("fs");
+/* const fs = require("fs");
 dataJS = [];
 fs.readFile("./test.json", "utf8", (err, jsonString) => {
     if (err) {
@@ -17,7 +17,7 @@ fs.readFile("./test.json", "utf8", (err, jsonString) => {
     }
     dataJS = jsonString;
     console.log(dataJS)
-});
+}); */
 
 const {
     flow1Financial
@@ -44,11 +44,11 @@ const menuPrincipal = () => {
     return [
         'Tipea alguna de las siguientes opciones',
         '',
-        '👉 *1* Financial (bancos)\n',
-        '👉 *2* Retail (ej Carrefour)\n',
-        '👉 *3* Administrativo (ES mobility, códigos reporte, etc.)\n',
-        '👉 *4* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~\n',
-        '👉 *5* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~\n',
+        '👉 *1* Financial (bancos)  ',
+        '👉 *2* Retail (ej Carrefour)',
+        '👉 *3* Administrativo (ES mobility, códigos reporte, etc.)',
+        '👉 *4* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~',
+        '👉 *5* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~',
     ]
 }
 
@@ -100,4 +100,13 @@ main()
 
 pm2 list
 pm2 stop mi-api
+
+Use the rm -r command to remove non-empty directories
+ rm -rf ./bot
+
+ver procesos
+ps -aux
+kill pid
+
+nodemon app.js   para aplicar cambios al guardar archivo
 */
