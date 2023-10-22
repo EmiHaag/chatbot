@@ -95,6 +95,8 @@ const main = async () => {
 }
 
 main()
+
+
 /* MANTIENE PROCESO activo al cerrar VM */
 /*  pm2 start app.js --name=bot1 
 
