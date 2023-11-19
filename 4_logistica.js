@@ -16,6 +16,7 @@ const flow4logisticaOp1 = addKeyword(['1']).addAnswer([
 const flow4logistica = addKeyword(['4', 'logistica']).addAnswer(
     [
         'Estás en 👉 Logística',
+        '*v* - *volver*\n',
         '*1* - ~Ver partes que están en estado "in transit"~',
         '*2* - ~Devolver partes~',
         '*3* - ~Reportar problema a logística~',
@@ -25,9 +26,11 @@ const flow4logistica = addKeyword(['4', 'logistica']).addAnswer(
 
         '',
         '*' + trigger + '* para volver al menu principal',
-    ],
-    null,
-    null,
+    ],{capture:true},async(ctx, {gotoFlow}) => {       
+        if (ctx.body == "v"){
+            await gotoFlow(require('./app'))
+        }
+    },
     [flow4logisticaOp1]
 )
 

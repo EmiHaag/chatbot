@@ -7,6 +7,7 @@ const trigger = "menu"
 
 const flowBna3pm = addKeyword(['1']).addAnswer([
     '📂 Estás en  Financial - Bancos / Módulos / Bna3 / 👉 *Mantenimiento preventivo del módulo Bna3* \n',
+    '*v* - *volver*\n',
 
     '*Mantenimiento preventivo* general del BNA3 (Okm)',
     'https://m.ncratleos.com/infocenter/index?page=content&id=PR20728\n',
@@ -43,16 +44,19 @@ const flowBna3pm = addKeyword(['1']).addAnswer([
 
     '*' + trigger + '* para volver al menu principal',
 
-], {
-    delay: 1000
-}, null, [])
+],{capture:true},async(ctx, {gotoFlow}) => {       
+    if (ctx.body == "v"){
+      
+        await gotoFlow(flowBna3)
+    }
+}, [])
 
 
 
 
 const flowBna3Partes = addKeyword(['0']).addAnswer([
     '📂 Estás en / Financial - Bancos / Módulos / Bna3 /👉 *Partes* \n',
-
+    '*v* - *volver*\n',
     '*MIST* Consultar partes de Bna3 en MIST (pág. 306) ',
     'https://ncratleos-my.sharepoint.com/:b:/p/eh185079/ETnRQKr9Ip9HueXJrGCn1uEB4OcPDA8ugg6MMvEoUw8NOQ\n',
 
@@ -72,13 +76,15 @@ const flowBna3Partes = addKeyword(['0']).addAnswer([
 
     '*' + trigger + '* para volver al menu principal',
 
-], {
-    delay: 1000
-}, null, [])
+],{capture:true},async(ctx, {gotoFlow}) => {       
+    if (ctx.body == "v"){
+        await gotoFlow(flowBna3)
+    }
+}, [])
 
 const flowBna3Videos = addKeyword(['3']).addAnswer([
     '📂 Estás en / Financial - Bancos / Módulos / Bna3 /👉 *Videos* \n',
-
+    '*v* - *volver*\n',
     '*Overview* del módulo',
     'https://m.ncratleos.com/library/OKM/NCRKM_KNOWLEDGE_VIEW/NCRKM_SVCS_VIEW/NCRKM_GTS_GLOBAL_TECHNICAL_SUPPORT_VIEW/Yimmy%20Garcia/BNA3%20Videos/BNA3%20Video1.mp4\n',
 
@@ -96,13 +102,15 @@ const flowBna3Videos = addKeyword(['3']).addAnswer([
 
     '*' + trigger + '* para volver al menu principal',
 
-], {
-    delay: 1000
-}, null, [])
+],{capture:true},async(ctx, {gotoFlow}) => {       
+    if (ctx.body == "v"){
+        await gotoFlow(flowBna3)
+    }
+}, [])
 
 const flowBna3ExcRechazos = addKeyword(['2']).addAnswer([
     '📂 Estás en / Financial - Bancos / Módulos / Bna3 /👉 *Exceso de rechazos por m-status 14 y 23* \n',
-
+    '*v* - *volver*\n',
     '*Exceso de rechazos de BNA por falta de mantenimiento*. El dispositivo reporta el M-Status 23 de validador, con MData     recurrente 8B51 y 8B52. Además, se adiciona la revisión del BNA por presencia recurrente del M-Status 14 (Escrow empty).',
     'https://ncratleos-my.sharepoint.com/:b:/p/eh185079/EV-zm0afxc1DnTF3PlQdBIoBsPKwOVlRsNq4Is0zzAwpeg?e=GqPYVc\n',
 
@@ -111,13 +119,16 @@ const flowBna3ExcRechazos = addKeyword(['2']).addAnswer([
 
     '*' + trigger + '* para volver al menu principal',
 
-], {
-    delay: 1000
-}, null, [])
+],{capture:true},async(ctx, {gotoFlow}) => {       
+    if (ctx.body == "v"){
+        await gotoFlow(flowBna3)
+    }
+}, [])
 
 
 const flowBna3 = addKeyword(['3', 'bna3']).addAnswer([
-    '📂 Estás en / Financial - Bancos / Módulos /👉 *BNA3*',
+    '📂 Estás en / Financial - Bancos / Módulos /👉 *BNA3*\n',
+    '*v* - *volver*\n',
     '*0* - *Partes* BNA3 ',
     '*1* - *Mantenimiento preventivo* del módulo BNA3',
     '*2* - Exceso de rechazos por *m-status 14 y 23*',
@@ -141,8 +152,17 @@ const flowBna3 = addKeyword(['3', 'bna3']).addAnswer([
     '*' + trigger + '* para volver al menu principal',
 
 ], {
-    delay: 1000
-}, null, [flowBna3Partes, flowBna3pm, flowBna3ExcRechazos, flowBna3Videos])
+    delay: 1000,
+    capture:true
+    },
+    async(ctx, { gotoFlow}) => {     
+        console.log("jwepfpjwepfpwejfpj")  
+        if (ctx.body == "v"){
+           // await gotoFlow(require("..1_financial"))
+        }
+    }
+    
+,[flowBna3Partes, flowBna3pm, flowBna3ExcRechazos, flowBna3Videos])
 
 
 var bna3 = {

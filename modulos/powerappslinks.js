@@ -5,7 +5,8 @@ const trigger = "menu"
 
 
 
-const flowPm = addKeyword(['7', 'PowerApps']).addAnswer([
+
+const powerappLinks = addKeyword(['7', 'PowerApps']).addAnswer([
     '📂 Estás en / Financial - Bancos / Módulos /👉 *PowerApps links* (Atleos)',
 
     '*Observación* : Si ya migraste a ncr atleos, recordá abrir powerapps -> icono perfil -> cerrar sesion (ncr)-> iniciar sesión con ncr atleos\n',
@@ -37,8 +38,5 @@ const flowPm = addKeyword(['7', 'PowerApps']).addAnswer([
 }, null, [])
 
 
-var pm = {
-    flowPm,
 
-}
-module.exports = pm;
+module.exports = powerappLinks;

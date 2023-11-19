@@ -16,15 +16,18 @@ const flow5otrosOp1 = addKeyword(['1']).addAnswer([
 const flow5otros = addKeyword(['5', 'otros']).addAnswer(
     [
         'Estás en 👉 Otros',
+        '*v* - *volver*\n',
         '*1* - Reinstalar pc/celular corporativo',
         '*2* - Renovar llave usb',
 
 
         '',
         '*' + getKey1 + '* para volver al menu principal',
-    ],
-    null,
-    null,
+    ],{capture:true},async(ctx, {gotoFlow}) => {       
+        if (ctx.body == "v"){
+            await gotoFlow(require('./app'))
+        }
+    },
     [flow5otrosOp1]
 )
 

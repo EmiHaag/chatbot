@@ -6,7 +6,7 @@
   "scripts": {
     "pre-copy": "cd .. && npm run  copy.lib base-baileys-memory",
     "watch": "nodemon",
-    "start": "nodemon app.js --ext js"
+    "start": "node app.js"
   },
   "keywords": [],
   "dependencies": {

@@ -8,26 +8,14 @@ const {
 var triggerKeys = ["hola", "help", "ayuda"]
 var triggerKeysSinSaludo = ["menu"]
 
-/* const fs = require("fs");
-dataJS = [];
-fs.readFile("./test.json", "utf8", (err, jsonString) => {
-    if (err) {
-        console.log("File read failed:", err);
-        return;
-    }
-    dataJS = jsonString;
-    console.log(dataJS)
-}); */
 
 const {
     flow1Financial
-} = require('./1_financial')
-const {
-    flow2Retail
-} = require('./2_retail')
+} = require('./financial')
+
 const {
     flow3Administrativo
-} = require('./3_administrativo')
+} = require('./2_administrativo')
 const {
     flow4logistica
 } = require('./4_logistica')
@@ -45,26 +33,23 @@ const menuPrincipal = () => {
         'Tipea alguna de las siguientes opciones',
         '',
         '👉 *1* Financial (bancos)  ',
-        '👉 *2* Retail (ej Carrefour)',
-        '👉 *3* Administrativo (ES mobility, códigos reporte, etc.)',
-        '👉 *4* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~',
-        '👉 *5* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~',
+        '👉 *2* Administrativo (ES mobility, códigos reporte, etc.)',
+/*         '👉 *3* ~Logística (Partes, envios, diferencias, ppk, intransit, etc..)~',
+        '👉 *4* ~Otros: Reinstalar pc/movil, renovar llave usb, etc..~', */
     ]
 }
 
-const menuPrincipalSinSaludo = addKeyword(triggerKeysSinSaludo)
-
-    .addAnswer(
+const menuPrincipalSinSaludo = addKeyword(triggerKeysSinSaludo).addAnswer(
         menuPrincipal(), {
             delay: 1000
         },
         null,
-        [flow1Financial, flow2Retail, flow3Administrativo, flow4logistica, flow5otros]
+        [flow1Financial, flow3Administrativo, flow4logistica, flow5otros]
     )
 
 /* FLOW PRINCIPAL */
 const flowPrincipal = addKeyword(triggerKeys)
-    .addAnswer('🙌BOT Local para pruebas - Hola bienvenido al *Chatbot* de ayuda al CE', {
+    .addAnswer('🙌 CE BOT NCR ATLEOS (Beta)\n  Hola bienvenido al *Chatbot* de ayuda al *CE*', {
         delay: 1000
     })
     .addAnswer('..para ayudarte necesito saber que área estás consultando ?', {
@@ -75,7 +60,7 @@ const flowPrincipal = addKeyword(triggerKeys)
             delay: 1000
         },
         null,
-        [flow1Financial, flow2Retail, flow3Administrativo, flow4logistica, flow5otros]
+        [flow1Financial,  flow3Administrativo, flow4logistica, flow5otros]
     )
 
 const main = async () => {
@@ -96,6 +81,8 @@ const main = async () => {
 
 main()
 
+module.exports = menuPrincipalSinSaludo;
+
 
 /* MANTIENE PROCESO activo al cerrar VM */
 /*  pm2 start app.js --name=bot1 
@@ -111,4 +98,14 @@ ps -aux
 kill pid
 
 nodemon app.js   para aplicar cambios al guardar archivo
+
+sitio putty: 'website'
+http://164.152.193.73:4003/
+
+
+
+ERRROR JSON APARECE CUANDO HAY DEPENDENCIAS QUE DEPENDEN UNAS DE OTRAS Y NO SE CARGAN SIMULTANEAMENTE
+EJ FLOW A DEPENDE DE B Y VICEVERSA
+
+
 */
