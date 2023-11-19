@@ -27,7 +27,7 @@ const flow4logistica = addKeyword(['4', 'logistica']).addAnswer(
         '',
         '*' + trigger + '* para volver al menu principal',
     ],{capture:true},async(ctx, {gotoFlow}) => {       
-        if (ctx.body == "v"){
+        if (ctx.body == "v" || ctx.body == "V" ){
             await gotoFlow(require('./app'))
         }
     },

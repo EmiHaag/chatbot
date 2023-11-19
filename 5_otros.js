@@ -24,7 +24,7 @@ const flow5otros = addKeyword(['5', 'otros']).addAnswer(
         '',
         '*' + getKey1 + '* para volver al menu principal',
     ],{capture:true},async(ctx, {gotoFlow}) => {       
-        if (ctx.body == "v"){
+        if (ctx.body == "v" || ctx.body == "V" ){
             await gotoFlow(require('./app'))
         }
     },

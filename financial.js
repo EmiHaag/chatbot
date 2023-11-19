@@ -3,8 +3,22 @@ const {
 } = require('@bot-whatsapp/bot')
 const powerappLinks = require("./modulos/powerappslinks")
 
-main_modules = require('./main_modules') 
 
+ const {
+    flowS1
+} = require('./modulos/s1')
+const {
+    flowS2
+} = require('./modulos/s2')
+const {
+    flowBna3
+} = require('./modulos/bna3')
+const {
+    flowgbru
+} = require('./modulos/gbru')
+const {
+    flowEpp
+} = require('./modulos/epp')
 const trigger = "menu"
 
 const flow1FinancialOp0 = addKeyword(['0', 'PIM']).addAnswer([
@@ -40,7 +54,7 @@ const flow1FinancialOp0 = addKeyword(['0', 'PIM']).addAnswer([
     '*' + trigger + '* para volver al menu principal',
 
 ],{capture:true},async(ctx, {gotoFlow}) => {       
-    if (ctx.body == "v"){
+    if (ctx.body == "v" || ctx.body == "V" ){
         await gotoFlow(flow1Financial)
     }
 })
@@ -54,7 +68,7 @@ const reconocerSO = addKeyword(["2"]).addAnswer(
         "https://apps.powerapps.com/play/e/default-6539da08-b835-422b-bc32-76ca20bec464/a/e45d1b56-8682-4e28-8689-68e08f7db541?tenantId=6539da08-b835-422b-bc32-76ca20bec464&hint=991718c9-6ece-4991-aa84-88fdd7a8b198&sourcetime=1697929436504&source=portal\n",
         '*v* - *volver*',
     ],{capture:true},async(ctx, {gotoFlow}) => {       
-        if (ctx.body == "v"){
+        if (ctx.body == "v" || ctx.body == "V" ){
             await gotoFlow(flow1Financial)
         }
         
@@ -72,7 +86,7 @@ const cambioDenom = addKeyword(["4"]).addAnswer(
             
             '*v* - *volver*',
         ],{capture:true},async(ctx, {gotoFlow}) => {       
-            if (ctx.body == "v"){
+            if (ctx.body == "v" || ctx.body == "V" ){
                 await gotoFlow(flow1Financial)
             }
             
@@ -96,7 +110,7 @@ const templates = addKeyword(["5"]).addAnswer(
                 "8 SelfServ Configuration", "3 Select device configuration","Hardware and information recovery", "Display firmware version.\n",
                 '*v* - *volver*',
             ],{capture:true},async(ctx, {gotoFlow}) => {       
-                if (ctx.body == "v"){
+                if (ctx.body == "v" || ctx.body == "V" ){
                     await gotoFlow(flow1Financial)
                 }
                 
@@ -120,7 +134,7 @@ const otros = addKeyword(["6"]).addAnswer(
                   
                     '*v* - *volver*',
                 ],{capture:true},async(ctx, {gotoFlow}) => {       
-                    if (ctx.body == "v"){
+                    if (ctx.body == "v" || ctx.body == "V" ){
                         await gotoFlow(flow1Financial)
                     }
                     
@@ -176,18 +190,38 @@ const software = addKeyword(["3"]).addAnswer(
                 "https://ncratleos.sharepoint.com/:f:/r/sites/clafse/cs-repository/Applications/WCS/Grupo%20Petersen?csf=1&web=1&e=inEczQ\n",
                 "*PREVENCION ART (Repositorio)*",
                 "https://ncratleos.sharepoint.com/:f:/r/sites/clafse/cs-repository/Applications/WCS/Prevencion%20ART?csf=1&web=1&e=VgSIWc\n",
-                "*RED LINK*",
-                "https://m.ncratleos.com/infocenter/index?page=content&id=PR20978\n",
-                "*RED LINK*",
-                "https://m.ncratleos.com/infocenter/index?page=content&id=PR20978\n",
+        
                   
                 '*v* - *volver*',
             ],{capture:true},async(ctx, {gotoFlow}) => {       
-                if (ctx.body == "v"){
+                if (ctx.body == "v" || ctx.body == "V" ){
                     await gotoFlow(flow1Financial)
                 }
                 
             }, [])
+
+const mainMod = addKeyword(['1']).addAnswer([
+                '📂 Estás en / Financial - Bancos / 👉 *Módulos*\n',
+                 'Cual es el módulo que buscas ?',
+                '*1* - *S1* Dispensador de dinero',
+                '*2* - *S2* Dispensador de dinero',
+                '*3* - *BNA3* Depósito dinero',
+                '*4* - *GBRU* Reciclador de dinero',
+                '*5* - ~BRM Reciclador de dinero~',
+                '*6* - ~SCPM Depósito de cheques~',
+                '*7* - ~MCRW Lectora de tarjetas motorizada~',
+                '*8* - Teclado encryptor EPP',
+                '*v* - *volver*\n\n',
+                '👉 *Biometría* - Todo lo que tenés que saber está en OKM',
+                'https://m.ncratleos.com/infocenter/index?page=content&id=PR20816',
+                '',
+                '*' + trigger + '* para volver al menu principal', 
+            ],{capture:true},async(ctx, {gotoFlow}) => {       
+                if (ctx.body == "v" || ctx.body == "V" ){
+                    await gotoFlow(flow1Financial)
+                }
+            },[flowS1, flowS2, flowEpp, flowBna3, flowgbru]) 
+
 const flow1Financial = addKeyword(['1', 'financial', 'bancos']).addAnswer(
     [
         '📂 Estás en / *Financial - Bancos *',
@@ -201,21 +235,19 @@ const flow1Financial = addKeyword(['1', 'financial', 'bancos']).addAnswer(
         '*6* - *Otros* (Deshabilitar *secure boot*, etc..)',
         '*7* - *PowerApps links* (Atleos)',
         '*v* - *volver*',
-        '*' + trigger + '* para volver al menu principal',
     ],{capture:true},async(ctx, {gotoFlow}) => {       
-        if (ctx.body == "v"){
+        if (ctx.body == "v" || ctx.body == "V" ){
             await gotoFlow(require("./app"))
-        }else if (ctx.body == "1"){
-     
-           const main_modules = require("./main_modules")
-           await gotoFlow(main_modules.flow1FinancialOp1) 
         }
-    }, [flow1FinancialOp0, reconocerSO, powerappLinks , cambioDenom,software, templates]
+    }, [mainMod,flow1FinancialOp0, reconocerSO, powerappLinks , cambioDenom,software, templates, otros]
 )
 
 
 
+var flowF = {
+    flow1Financial,
+
+}
 
 
-
-module.exports = {flow1FinancialOp0, flow1Financial};
+module.exports = flowF;

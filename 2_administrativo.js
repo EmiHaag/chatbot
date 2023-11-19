@@ -16,7 +16,7 @@ const flow3AdministrativoOp1 = addKeyword(['1']).addAnswer([
     '*' + trigger + '* para volver al menu principal',
 
 ],{capture:true},async(ctx, {gotoFlow}) => {       
-    if (ctx.body == "v"){
+    if (ctx.body == "v" || ctx.body == "V" ){
         await gotoFlow(flow3Administrativo)
     }
     
@@ -34,7 +34,7 @@ const flow3AdministrativoOp2 = addKeyword(['2']).addAnswer([
     '*' + trigger + '* para volver al menu principal',
 
 ],{capture:true},async(ctx, {gotoFlow}) => {       
-    if (ctx.body == "v"){
+    if (ctx.body == "v" || ctx.body == "V" ){
         await gotoFlow(flow3Administrativo)
     }
     
@@ -50,7 +50,7 @@ const flow3Administrativo = addKeyword(['2', 'administrativo']).addAnswer(
 
         '*' + trigger + '* para volver al menu principal',
     ],{capture:true},async(ctx, {gotoFlow}) => {       
-        if (ctx.body == "v"){
+        if (ctx.body == "v" || ctx.body == "V" ){
             await gotoFlow(require('./app'))
         }
     },

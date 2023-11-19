@@ -102,7 +102,8 @@ nodemon app.js   para aplicar cambios al guardar archivo
 sitio putty: 'website'
 http://164.152.193.73:4003/
 
-
+//Traer updates desde github
+ git pull origin
 
 ERRROR JSON APARECE CUANDO HAY DEPENDENCIAS QUE DEPENDEN UNAS DE OTRAS Y NO SE CARGAN SIMULTANEAMENTE
 EJ FLOW A DEPENDE DE B Y VICEVERSA
